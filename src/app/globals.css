@@ -1,0 +1,195 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Sirax dark-tech theme (always dark) */
+  --background: oklch(0.07 0.012 250);
+  --foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.11 0.015 250);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.1 0.015 250);
+  --popover-foreground: oklch(0.97 0.005 250);
+  --primary: oklch(0.78 0.16 195); /* cyan accent */
+  --primary-foreground: oklch(0.1 0.02 230);
+  --secondary: oklch(0.16 0.02 250);
+  --secondary-foreground: oklch(0.95 0.005 250);
+  --muted: oklch(0.16 0.015 250);
+  --muted-foreground: oklch(0.65 0.01 250);
+  --accent: oklch(0.78 0.16 195);
+  --accent-foreground: oklch(0.1 0.02 230);
+  --destructive: oklch(0.65 0.22 22);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 8%);
+  --ring: oklch(0.78 0.16 195 / 60%);
+  --chart-1: oklch(0.78 0.16 195);
+  --chart-2: oklch(0.72 0.18 150);
+  --chart-3: oklch(0.65 0.2 280);
+  --chart-4: oklch(0.78 0.16 60);
+  --chart-5: oklch(0.7 0.2 350);
+  --sidebar: oklch(0.1 0.015 250);
+  --sidebar-foreground: oklch(0.97 0.005 250);
+  --sidebar-primary: oklch(0.78 0.16 195);
+  --sidebar-primary-foreground: oklch(0.1 0.02 230);
+  --sidebar-accent: oklch(0.16 0.02 250);
+  --sidebar-accent-foreground: oklch(0.97 0.005 250);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.78 0.16 195 / 60%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+    background-color: var(--background);
+  }
+}
+
+/* === Sirax custom utilities === */
+.sirax-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.sirax-radial-mask {
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+
+.sirax-text-gradient {
+  background: linear-gradient(120deg, #fff 0%, #7be0ff 45%, #4bd6c5 75%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sirax-card-glow {
+  position: relative;
+}
+.sirax-card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(123, 224, 255, 0.35), rgba(75, 214, 197, 0.05) 50%, transparent 80%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.sirax-glass {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+@keyframes sirax-pulse-ring {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { opacity: 0; }
+}
+.sirax-pulse-ring {
+  animation: sirax-pulse-ring 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes sirax-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.sirax-float {
+  animation: sirax-float 6s ease-in-out infinite;
+}
+
+@keyframes sirax-scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(900%); opacity: 0; }
+}
+.sirax-scan-line {
+  animation: sirax-scan 4.5s linear infinite;
+}
+
+@keyframes sirax-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.sirax-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(123, 224, 255, 0.15), transparent);
+  background-size: 200% 100%;
+  animation: sirax-shimmer 2.5s linear infinite;
+}
+
+@keyframes sirax-orbit {
+  0% { transform: rotate(0deg) translateX(var(--orbit-r, 120px)) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(var(--orbit-r, 120px)) rotate(-360deg); }
+}
+.sirax-orbit {
+  animation: sirax-orbit var(--orbit-d, 14s) linear infinite;
+}
+
+.sirax-scroll-hidden::-webkit-scrollbar { display: none; }
+.sirax-scroll-hidden { scrollbar-width: none; }
+
+/* Sticky footer */
+.sirax-app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.sirax-app-main {
+  flex: 1 0 auto;
+}
