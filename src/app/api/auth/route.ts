@@ -7,7 +7,7 @@ const SUPPORT_EMAIL = "soporte@sirax.lat";
 // Plantilla del correo de confirmación automática al usuario
 const AUTOCONFIRM_MESSAGE = `Gracias por solicitar acceso a Sirax.
 
-Hemos recibido tu solicitud correctamente y nuestro equipo de ventas la está revisando. Te contactaremos en menos de 24 horas hábiles a este mismo correo para coordinar una demo y la activación de tu cuenta.
+Hemos recibido tu solicitud correctamente y nuestro equipo de ventas la está revisando. Te contactaremos en menos de 24 horas hábiles a este mismo correo para coordinar una demo y la activación[...]
 
 Mientras tanto, si tienes alguna duda, escríbenos a ${SUPPORT_EMAIL}.
 
@@ -113,13 +113,16 @@ export async function POST(req: NextRequest) {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Referer": "https://sirax.lat",
+          "Origin": "https://sirax.lat",
         },
         body: JSON.stringify(formData),
       });
       forwarded = resp.ok;
       if (!resp.ok) {
         const text = await resp.text().catch(() => "");
-        console.error("[request-access] FormSubmit respondió con error:", resp.status, text);
+        console.error("[request-access] FormSubmit respondió con error:", resp.status, text.substring(0, 200));
       }
     } catch (mailErr) {
       console.error("[request-access] No se pudo reenviar a FormSubmit:", mailErr);
