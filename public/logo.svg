@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 200 200" height="200" width="200">
+  
+  
+  
+  
+  <g>
+    
+    
+    <circle fill="#FFFFFF" r="6" cy="100" cx="100"></circle>
+    
+    
+    <line stroke-linecap="round" stroke-width="7" stroke="#14E6B3" y2="65" x2="135" y1="100" x1="100"></line>
+    <circle fill="#14E6B3" r="8" cy="65" cx="135"></circle>
+    
+    
+    <line stroke-linecap="round" stroke-width="7" stroke="#14E6B3" y2="65" x2="65" y1="100" x1="100"></line>
+    <circle fill="#14E6B3" r="8" cy="65" cx="65"></circle>
+    
+    
+    <line stroke-linecap="round" stroke-width="7" stroke="#14E6B3" y2="135" x2="135" y1="100" x1="100"></line>
+    <circle fill="#14E6B3" r="8" cy="135" cx="135"></circle>
+    
+    
+    <line stroke-linecap="round" stroke-width="7" stroke="#14E6B3" y2="135" x2="65" y1="100" x1="100"></line>
+    <circle fill="#14E6B3" r="8" cy="135" cx="65"></circle>
+    
+    
+    <line stroke-linecap="round" stroke-width="7" stroke="#14E6B3" y2="100" x2="150" y1="100" x1="100"></line>
+    <circle fill="#14E6B3" r="8" cy="100" cx="150"></circle>
+    
+    
+    <line stroke-linecap="round" stroke-width="7" stroke="#14E6B3" y2="100" x2="50" y1="100" x1="100"></line>
+    <circle fill="#14E6B3" r="8" cy="100" cx="50"></circle>
+    
+    
+    <circle fill="#FFFFFF" r="5" cy="65" cx="100"></circle>
+    <circle fill="#FFFFFF" r="5" cy="135" cx="100"></circle>
+  </g>
+</svg>
