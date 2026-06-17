@@ -10,7 +10,6 @@ export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [authOpen, setAuthOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<"login" | "register">("register");
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -99,8 +98,7 @@ export function Hero() {
     };
   }, []);
 
-  const openAuth = (mode: "login" | "register") => {
-    setAuthMode(mode);
+  const openAuth = () => {
     setAuthOpen(true);
   };
 
@@ -171,19 +169,11 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                onClick={() => openAuth("register")}
+                onClick={openAuth}
                 className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-black hover:from-cyan-300 hover:to-emerald-300 font-semibold group"
               >
                 Solicitar acceso
                 <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => openAuth("login")}
-                className="border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10"
-              >
-                Iniciar sesión
               </Button>
             </motion.div>
 
@@ -241,7 +231,7 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      <AuthModal open={authOpen} onOpenChange={setAuthOpen} initialMode={authMode} />
+      <AuthModal open={authOpen} onOpenChange={setAuthOpen} />
     </section>
   );
 }

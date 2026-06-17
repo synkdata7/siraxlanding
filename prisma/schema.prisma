@@ -35,11 +35,13 @@ model LoginLog {
 }
 
 model ContactRequest {
-  id        String   @id @default(cuid())
-  name      String
-  email     String
-  company   String?
-  phone     String?
-  message   String?
-  createdAt DateTime @default(now())
+  id                 String   @id @default(cuid())
+  name               String
+  email              String
+  company            String?
+  phone              String?
+  useCase            String?
+  projectDescription String?
+  message            String?
+  createdAt          DateTime @default(now())
 }

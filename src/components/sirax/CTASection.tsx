@@ -8,10 +8,8 @@ import { AuthModal } from "./AuthModal";
 
 export function CTASection() {
   const [authOpen, setAuthOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<"login" | "register">("register");
 
-  const open = (mode: "login" | "register") => {
-    setAuthMode(mode);
+  const open = () => {
     setAuthOpen(true);
   };
 
@@ -47,7 +45,7 @@ export function CTASection() {
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <Button
               size="lg"
-              onClick={() => open("register")}
+              onClick={open}
               className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-black hover:from-cyan-300 hover:to-emerald-300 font-semibold group"
             >
               Solicitar acceso a la plataforma
@@ -59,7 +57,7 @@ export function CTASection() {
               asChild
               className="border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10"
             >
-              <a href="mailto:contacto@daxserdig.site">
+              <a href="mailto:soporte@sirax.lat">
                 <Mail className="h-4 w-4 mr-2" />
                 Hablar con el equipo
               </a>
@@ -72,7 +70,7 @@ export function CTASection() {
         </motion.div>
       </div>
 
-      <AuthModal open={authOpen} onOpenChange={setAuthOpen} initialMode={authMode} />
+      <AuthModal open={authOpen} onOpenChange={setAuthOpen} />
     </section>
   );
 }

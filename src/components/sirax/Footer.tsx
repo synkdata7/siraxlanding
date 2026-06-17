@@ -33,7 +33,7 @@ const LINKS = [
   {
     title: "Empresa",
     items: [
-      { label: "Contacto", href: "mailto:contacto@daxserdig.site" },
+      { label: "Contacto", href: "mailto:soporte@sirax.lat" },
       { label: "Aviso de Privacidad", href: "#" },
       { label: "Términos de Servicio", href: "#" },
       { label: "Estado del servicio", href: "#" },
@@ -68,11 +68,11 @@ export function Footer() {
             </p>
 
             <a
-              href="mailto:contacto@daxserdig.site"
+              href="mailto:soporte@sirax.lat"
               className="mt-4 inline-flex items-center gap-2 text-xs text-cyan-300 hover:text-cyan-200 transition-colors"
             >
               <Mail className="h-3.5 w-3.5" />
-              contacto@daxserdig.site
+              soporte@sirax.lat
             </a>
 
             <div className="mt-5 flex flex-wrap items-center gap-3 text-[11px] text-muted-foreground">

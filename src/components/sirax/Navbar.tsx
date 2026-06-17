@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Fingerprint, Menu, X, ChevronDown } from "lucide-react";
+import { Fingerprint, Menu, X } from "lucide-react";
 import { AuthModal } from "./AuthModal";
 
 const NAV_ITEMS = [
@@ -18,7 +18,6 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<"login" | "register">("register");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -27,8 +26,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const openAuth = (mode: "login" | "register") => {
-    setAuthMode(mode);
+  const openAuth = () => {
     setMobileOpen(false);
     setAuthOpen(true);
   };
@@ -56,9 +54,7 @@ export function Navbar() {
                 </div>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-lg font-semibold tracking-tight">
-                  Sirax
-                </span>
+                <span className="text-lg font-semibold tracking-tight">Sirax</span>
                 <span className="text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
                   by SynkData
                 </span>
@@ -78,19 +74,11 @@ export function Navbar() {
               ))}
             </nav>
 
-            {/* Auth buttons */}
+            {/* CTA button */}
             <div className="hidden lg:flex items-center gap-2">
               <Button
-                variant="ghost"
                 size="sm"
-                onClick={() => openAuth("login")}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Iniciar sesión
-              </Button>
-              <Button
-                size="sm"
-                onClick={() => openAuth("register")}
+                onClick={openAuth}
                 className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-black hover:from-cyan-300 hover:to-emerald-300 font-semibold"
               >
                 Solicitar acceso
@@ -129,21 +117,13 @@ export function Navbar() {
                     {item.label}
                   </a>
                 ))}
-                <div className="pt-3 grid grid-cols-2 gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => openAuth("login")}
-                    className="border-white/10"
-                  >
-                    Iniciar sesión
-                  </Button>
+                <div className="pt-3">
                   <Button
                     size="sm"
-                    onClick={() => openAuth("register")}
-                    className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-black"
+                    onClick={openAuth}
+                    className="w-full bg-gradient-to-r from-cyan-400 to-emerald-400 text-black font-semibold"
                   >
-                    Registrarme
+                    Solicitar acceso
                   </Button>
                 </div>
               </div>
@@ -152,11 +132,7 @@ export function Navbar() {
         </AnimatePresence>
       </motion.header>
 
-      <AuthModal
-        open={authOpen}
-        onOpenChange={setAuthOpen}
-        initialMode={authMode}
-      />
+      <AuthModal open={authOpen} onOpenChange={setAuthOpen} />
     </>
   );
 }
