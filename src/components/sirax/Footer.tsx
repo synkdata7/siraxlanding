@@ -1,6 +1,7 @@
 "use client";
 
 import { Fingerprint, Mail, Globe2, ShieldCheck, Lock } from "lucide-react";
+import { OPEN_COOKIE_PREFERENCES_EVENT } from "@/components/sirax/CookieConsent";
 
 const LINKS = [
   {
@@ -36,6 +37,7 @@ const LINKS = [
       { label: "Contacto", href: "mailto:soporte@sirax.lat" },
       { label: "Aviso de Privacidad", href: "#" },
       { label: "Términos de Servicio", href: "#" },
+      { label: "Política de Cookies", href: "/cookies" },
       { label: "Estado del servicio", href: "#" },
     ],
   },
@@ -119,7 +121,14 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-foreground transition-colors">Privacidad</a>
             <a href="#" className="hover:text-foreground transition-colors">Términos</a>
-            <a href="#" className="hover:text-foreground transition-colors">Cookies</a>
+            <a href="/cookies" className="hover:text-foreground transition-colors">Política de Cookies</a>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent(OPEN_COOKIE_PREFERENCES_EVENT))}
+              className="hover:text-foreground transition-colors"
+            >
+              Configurar cookies
+            </button>
           </div>
         </div>
       </div>
